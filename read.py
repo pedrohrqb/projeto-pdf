@@ -2,7 +2,7 @@ import tabula
 import pandas as pd
 
 # caminho do pdf
-arquivo_pdf = 'resultadoogmo.pdf'
+arquivo_pdf = 'tabela2.pdf'
 
 # Extrai todas as tabelas de todas as páginas
 tabelas = tabula.read_pdf(arquivo_pdf, pages="all", multiple_tables='False')
@@ -11,7 +11,7 @@ tabelas = tabula.read_pdf(arquivo_pdf, pages="all", multiple_tables='False')
 df_final = pd.concat(tabelas, ignore_index=True)
 
 # Salva como excel
-df_final.to_excel('tabelas_unificadas.xlsx', index=False)
+df_final.to_excel('tabelas_unificadas22.xlsx', index=False)
 
 # Criar lista com os valores do cabeçalho que devem ser removidos quando repetidos
 cabecalho_padrao = [
@@ -19,7 +19,7 @@ cabecalho_padrao = [
 ]
 
 # lendo o arquivo excel
-df = pd.read_excel('tabelas_unificadas.xlsx')
+df = pd.read_excel('tabelas_unificadas22.xlsx')
 
 # Remover linhas que sejam exatamente o cabeçalho repetido
 df_limpo = df[~(
@@ -36,5 +36,5 @@ df_limpo = df_limpo.reset_index(drop=True)
 df_limpo.columns = cabecalho_padrao
 
 # Salvar Excel limpo
-df_limpo.to_excel('tabelas_final.xlsx', index=False)
+df_limpo.to_excel('tabelas_final22.xlsx', index=False)
 
